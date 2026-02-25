@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Praises from the Bible: A Celebration of God's Glory and Goodness</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             margin: 0;
@@ -13,19 +17,22 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #333;
+            flex-shrink: 0;
         }
         h1 {
-            font-size: 2.5em;
-            margin: 0 0 10px 0;
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            margin: 0 0 8px 0;
             color: #2c3e50;
+            line-height: 1.2;
         }
         .subtitle {
-            font-size: 1.2em;
+            font-size: clamp(1em, 3vw, 1.2em);
             color: #7f8c8d;
             margin: 0;
         }
@@ -34,11 +41,12 @@
             width: 100%;
             max-width: 700px;
             height: 0;
-            padding-bottom: 64.29%; /* 450/700 ≈ 0.6429 */
+            padding-bottom: 60%; /* Slightly taller for mobile portrait */
             background: #fff;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
             overflow: hidden;
+            transition: all 0.3s ease;
         }
         iframe {
             position: absolute;
@@ -48,19 +56,78 @@
             height: 100%;
             border: none;
             border-radius: 12px;
+            transition: border-radius 0.3s ease;
         }
         footer {
-            margin-top: 40px;
+            margin-top: 30px;
             text-align: center;
             color: #95a5a6;
-            font-size: 0.9em;
+            font-size: clamp(0.8em, 2.5vw, 0.9em);
+            flex-shrink: 0;
         }
+        
+        /* Mobile fullscreen optimizations */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
-            h1 {
-                font-size: 2em;
+            header {
+                margin-bottom: 15px;
+            }
+            .embed-container {
+                padding-bottom: 75%; /* Taller for portrait phones */
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                margin: 0 auto;
+            }
+            /* Full viewport height on small screens */
+            @media (max-height: 600px) {
+                body {
+                    padding: 5px;
+                }
+                header {
+                    margin-bottom: 10px;
+                }
+                .embed-container {
+                    padding-bottom: 80%;
+                }
+            }
+        }
+        
+        /* Landscape mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .embed-container {
+                padding-bottom: 50%;
+            }
+        }
+        
+        /* Request fullscreen button for easy access */
+        .fullscreen-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(52,152,219,0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .fullscreen-btn:hover {
+            background: #2980b9;
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .fullscreen-btn {
+                bottom: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
@@ -73,13 +140,69 @@
     <div class="embed-container">
         <iframe 
             src="https://gamma.app/embed/xa8rrjifeutvv4o" 
-            allow="fullscreen"
+            allow="fullscreen; accelerometer; gyroscope; magnetometer; microphone; camera; autoplay; encrypted-media; geolocation; picture-in-picture"
             title="100 Praises from the Bible: A Celebration of God's Glory and Goodness">
         </iframe>
     </div>
     <footer>
         <p>Hosted on GitHub Pages for your worship and devotional use. &copy; 2026 Sunny Prasad</p>
     </footer>
+    
+    <button class="fullscreen-btn" title="Enter Fullscreen" onclick="requestFullscreen()">⛶</button>
+
+    <script>
+        // Fullscreen functionality for better mobile experience
+        function requestFullscreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+        
+        // Handle fullscreen change
+        document.addEventListener('fullscreenchange', () => {
+            const btn = document.querySelector('.fullscreen-btn');
+            if (!document.fullscreenElement) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Auto-hide button in fullscreen
+        document.addEventListener('webkitfullscreenchange', () => {
+            const btn = document.querySelector('.fullscreen-btn');
+            if (!document.webkitFullscreenElement) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+        
+        // Improve mobile responsiveness
+        function updateAspect() {
+            const container = document.querySelector('.embed-container');
+            const isMobile = window.innerWidth <= 768;
+            const isPortrait = window.innerHeight > window.innerWidth;
+            
+            if (isMobile && isPortrait) {
+                container.style.paddingBottom = '75%';
+            } else if (isMobile) {
+                container.style.paddingBottom = '55%';
+            } else {
+                container.style.paddingBottom = '60%';
+            }
+        }
+        
+        window.addEventListener('resize', updateAspect);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(updateAspect, 100);
+        });
+        updateAspect(); // Initial call
+    </script>
 </body>
 </html>
-
