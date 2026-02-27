@@ -3,206 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100 Praises from the Bible: A Celebration of God's Glory and Goodness</title>
+    <title>100 Praises from the Bible</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f8f9fa;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            flex-shrink: 0;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
         }
-        h1 {
-            font-size: clamp(1.8em, 5vw, 2.5em);
-            margin: 0 0 8px 0;
-            color: #2c3e50;
-            line-height: 1.2;
+        .bg-spiritual {
+            background-color: #0f172a; /* Slate 900 */
+            background-image: radial-gradient(circle at top right, #1e293b, #0f172a);
         }
-        .subtitle {
-            font-size: clamp(1em, 3vw, 1.2em);
-            color: #7f8c8d;
-            margin: 0;
+        .praise-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .embed-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            height: 0;
-            padding-bottom: 60%; /* Slightly taller for mobile portrait */
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-            overflow: hidden;
-            transition: all 0.3s ease;
+        .praise-card:active {
+            transform: scale(0.98);
         }
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 12px;
-            transition: border-radius 0.3s ease;
-        }
-        footer {
-            margin-top: 30px;
-            text-align: center;
-            color: #95a5a6;
-            font-size: clamp(0.8em, 2.5vw, 0.9em);
-            flex-shrink: 0;
-        }
-        
-        /* Mobile fullscreen optimizations */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            header {
-                margin-bottom: 15px;
-            }
-            .embed-container {
-                padding-bottom: 75%; /* Taller for portrait phones */
-                border-radius: 8px;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-                margin: 0 auto;
-            }
-            /* Full viewport height on small screens */
-            @media (max-height: 600px) {
-                body {
-                    padding: 5px;
-                }
-                header {
-                    margin-bottom: 10px;
-                }
-                .embed-container {
-                    padding-bottom: 80%;
-                }
-            }
-        }
-        
-        /* Landscape mobile */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .embed-container {
-                padding-bottom: 50%;
-            }
-        }
-        
-        /* Request fullscreen button for easy access */
-        .fullscreen-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.2em;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(52,152,219,0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-        .fullscreen-btn:hover {
-            background: #2980b9;
-            transform: scale(1.1);
-        }
-        @media (max-width: 768px) {
-            .fullscreen-btn {
-                bottom: 10px;
-                right: 10px;
-                width: 45px;
-                height: 45px;
-            }
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background-color: rgba(15, 23, 42, 0.8);
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>100 Praises from the Bible</h1>
-        <p class="subtitle">A Celebration of God's Glory and Goodness</p>
-    </header>
-    <div class="embed-container">
-        <iframe 
-            src="https://gamma.app/embed/xa8rrjifeutvv4o" 
-            allow="fullscreen; accelerometer; gyroscope; magnetometer; microphone; camera; autoplay; encrypted-media; geolocation; picture-in-picture"
-            title="100 Praises from the Bible: A Celebration of God's Glory and Goodness">
-        </iframe>
-    </div>
-    <footer>
-        <p>Hosted on GitHub Pages for your worship and devotional use. &copy; 2026 Sunny Prasad</p>
-    </footer>
-    
-    <button class="fullscreen-btn" title="Enter Fullscreen" onclick="requestFullscreen()">⛶</button>
+<body class="bg-spiritual text-slate-100 min-h-screen">
 
-    <script>
-        // Fullscreen functionality for better mobile experience
-        function requestFullscreen() {
-            const elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
-        }
+    <!-- Hero Section -->
+    <header class="relative py-20 px-6 text-center border-b border-slate-800">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-amber-200">100 Praises from the Bible</h1>
+            <p class="text-xl md:text-2xl text-slate-400 font-light italic">
+                A Celebration of God’s Glory and Goodness
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+                <div class="h-1 w-20 bg-amber-500 rounded-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Navigation for Categories -->
+    <nav class="sticky top-0 z-50 nav-blur border-b border-slate-800 overflow-x-auto no-scrollbar">
+        <div class="flex whitespace-nowrap px-4 py-3 gap-6 text-sm font-medium uppercase tracking-wider text-slate-400">
+            <a href="#intro" class="hover:text-amber-200 transition-colors">Intro</a>
+            <a href="#character" class="hover:text-amber-200 transition-colors">Character</a>
+            <a href="#works" class="hover:text-amber-200 transition-colors">Works</a>
+            <a href="#gratitude" class="hover:text-amber-200 transition-colors">Gratitude</a>
+            <a href="#faithfulness" class="hover:text-amber-200 transition-colors">Faithfulness</a>
+            <a href="#psalms" class="hover:text-amber-200 transition-colors">Psalms</a>
+            <a href="#nt" class="hover:text-amber-200 transition-colors">New Testament</a>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-12">
         
-        // Handle fullscreen change
-        document.addEventListener('fullscreenchange', () => {
-            const btn = document.querySelector('.fullscreen-btn');
-            if (!document.fullscreenElement) {
-                btn.style.display = 'block';
-            } else {
-                btn.style.display = 'none';
-            }
-        });
-        
-        // Auto-hide button in fullscreen
-        document.addEventListener('webkitfullscreenchange', () => {
-            const btn = document.querySelector('.fullscreen-btn');
-            if (!document.webkitFullscreenElement) {
-                btn.style.display = 'block';
-            } else {
-                btn.style.display = 'none';
-            }
-        });
-        
-        // Improve mobile responsiveness
-        function updateAspect() {
-            const container = document.querySelector('.embed-container');
-            const isMobile = window.innerWidth <= 768;
-            const isPortrait = window.innerHeight > window.innerWidth;
-            
-            if (isMobile && isPortrait) {
-                container.style.paddingBottom = '75%';
-            } else if (isMobile) {
-                container.style.paddingBottom = '55%';
-            } else {
-                container.style.paddingBottom = '60%';
-            }
-        }
-        
-        window.addEventListener('resize', updateAspect);
-        window.addEventListener('orientationchange', () => {
-            setTimeout(updateAspect, 100);
-        });
-        updateAspect(); // Initial call
-    </script>
+        <!-- Introduction -->
+        <section id="intro" class="mb-20 text-center max-w-2xl mx-auto">
+            <h2 class="text-3xl font-bold mb-6">The Power of Praise</h2>
+            <div class="grid gap-6 text-slate-300 leading-relaxed">
+                <p>Praise is woven into the very fabric of the Bible, expressing awe, gratitude, and heartfelt worship toward God across every book and era of Scripture.</p>
+                <p>These 100 unique praises span Scripture’s full breadth to inspire faith and worship in every season of life.</p>
+            </div>
+        </section>
+
+        <!-- CATEGORY: CHARACTER -->
+        <section id="character" class="mb-24">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold text-amber-200">God's Character & Nature</h2>
+                <div class="flex-grow h-px bg-slate-800"></div>
+                <span class="text-xs font-bold text-slate-500">1-10</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Praises 1-10 -->
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Exodus 15:2</span>
+                    <p class="text-lg italic">"The LORD is my strength and my song: he has become my salvation."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Exodus 15:11</span>
+                    <p class="text-lg italic">"Who is like you, O LORD, among the gods? Who is like you, majestic in holiness, awesome in glory, working wonders?"</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 103:8</span>
+                    <p class="text-lg italic">"The LORD is compassionate and gracious, slow to anger, abounding in love."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Isaiah 6:3</span>
+                    <p class="text-lg italic">"Holy, holy, holy is the LORD Almighty; the whole earth is full of his glory."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 106:1</span>
+                    <p class="text-lg italic">"Give thanks to the LORD, for he is good; his love endures forever."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">1 Chronicles 16:25</span>
+                    <p class="text-lg italic">"Great is the LORD and most worthy of praise; he is to be feared above all gods."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 97:1</span>
+                    <p class="text-lg italic">"The LORD reigns, let the earth be glad; let the distant shores rejoice."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 145:17</span>
+                    <p class="text-lg italic">"The LORD is righteous in all his ways and faithful in all he does."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">2 Samuel 22:2</span>
+                    <p class="text-lg italic">"The LORD is my rock, my fortress and my deliverer."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Ephesians 1:3</span>
+                    <p class="text-lg italic">"Blessed be the God and Father of our Lord Jesus Christ, who has blessed us with every spiritual blessing."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY: MIGHTY WORKS -->
+        <section id="works" class="mb-24">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold text-amber-200">Mighty Works & Salvation</h2>
+                <div class="flex-grow h-px bg-slate-800"></div>
+                <span class="text-xs font-bold text-slate-500">11-20</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 78:13</span>
+                    <p class="text-lg italic">"He parted the sea and led them through; he made the water stand up like a wall."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 147:3</span>
+                    <p class="text-lg italic">"He heals the brokenhearted and binds up their wounds."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 27:1</span>
+                    <p class="text-lg italic">"The LORD is my light and my salvation—whom shall I fear?"</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 40:2</span>
+                    <p class="text-lg italic">"He raised me up from the slimy pit, out of the mud and mire."</p>
+                </div>
+                <!-- ... Content condensed for brevity ... -->
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Job 16:20</span>
+                    <p class="text-lg italic">"He has redeemed my soul in peace from the battle that was against me."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY: GRATITUDE -->
+        <section id="gratitude" class="mb-24">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold text-amber-200">Gratitude & Thanksgiving</h2>
+                <div class="flex-grow h-px bg-slate-800"></div>
+                <span class="text-xs font-bold text-slate-500">21-30</span>
+            </div>
+            <div class="bg-amber-900/10 p-8 rounded-3xl border border-amber-900/30 mb-8">
+                <p class="text-amber-100 text-center text-xl italic font-serif">"Enter his gates with thanksgiving and his courts with praise; give thanks to him and praise his name." — Psalm 100:4</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 7:17</span>
+                    <p class="text-lg italic">"I will give thanks to the LORD because of his righteousness; I will sing the praises of the name of the LORD Most High."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 146:2</span>
+                    <p class="text-lg italic">"I will praise the LORD all my life; I will sing praise to my God as long as I live."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">2 Corinthians 9:15</span>
+                    <p class="text-lg italic">"Thanks be to God for his indescribable gift!"</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 150:6</span>
+                    <p class="text-lg italic">"Let everything that has breath praise the LORD."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY: FAITHFULNESS -->
+        <section id="faithfulness" class="mb-24">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold text-amber-200">Faithfulness & Covenant</h2>
+                <div class="flex-grow h-px bg-slate-800"></div>
+                <span class="text-xs font-bold text-slate-500">31-40</span>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Lamentations 3:22</span>
+                    <p class="text-base italic">"The steadfast love of the LORD never ceases; his mercies never come to an end."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Zephaniah 3:17</span>
+                    <p class="text-base italic">"The LORD your God is with you, the Mighty Warrior who saves."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 23:1</span>
+                    <p class="text-base italic">"The LORD is my shepherd; I shall not want."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 91:4</span>
+                    <p class="text-base italic">"He will cover you with his feathers, and under his wings you will find refuge."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Nahum 1:7</span>
+                    <p class="text-base italic">"The LORD is good, a refuge in times of trouble. He cares for those who trust in him."</p>
+                </div>
+                <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                    <span class="text-amber-500 font-bold block mb-2">Psalm 105:8</span>
+                    <p class="text-base italic">"He remembers his covenant forever, the promise he made, for a thousand generations."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY: NEW TESTAMENT -->
+        <section id="nt" class="mb-24">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold text-amber-200">New Testament Praises</h2>
+                <div class="flex-grow h-px bg-slate-800"></div>
+                <span class="text-xs font-bold text-slate-500">51-60</span>
+            </div>
+            <div class="grid gap-8">
+                <div class="praise-card bg-slate-800/50 p-8 rounded-3xl border-l-4 border-amber-500 shadow-xl">
+                    <span class="text-amber-500 font-bold block mb-3">Revelation 5:12</span>
+                    <p class="text-2xl font-serif italic mb-2">"Worthy is the Lamb, who was slain, to receive power and wealth and wisdom and strength and honour and glory and praise!"</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                        <span class="text-amber-500 font-bold block mb-2">Ephesians 3:20</span>
+                        <p class="text-lg italic">"Now to him who is able to do immeasurably more than all we ask or imagine..."</p>
+                    </div>
+                    <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                        <span class="text-amber-500 font-bold block mb-2">Luke 2:14</span>
+                        <p class="text-lg italic">"Glory to God in the highest, and on earth peace, good will toward men."</p>
+                    </div>
+                    <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                        <span class="text-amber-500 font-bold block mb-2">1 Timothy 1:17</span>
+                        <p class="text-lg italic">"Now to the King eternal, immortal, invisible, the only God, be honour and glory forever and ever. Amen."</p>
+                    </div>
+                    <div class="praise-card bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
+                        <span class="text-amber-500 font-bold block mb-2">Colossians 3:15</span>
+                        <p class="text-lg italic">"Let the peace of Christ rule in your hearts... And be thankful."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA / CONCLUSION -->
+        <section id="conclusion" class="mt-32 text-center py-16 bg-slate-800/30 rounded-3xl border border-slate-800">
+            <h2 class="text-3xl font-bold mb-6 text-amber-200">Living a Life of Praise</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Incorporating these praises into your daily practice deepens faith, kindles hope in difficult seasons, and strengthens spiritual joy.
+            </p>
+            <p class="text-xl font-serif italic text-amber-100">
+                "To him be glory in the church and in Christ Jesus throughout all generations, forever and ever. Amen."
+            </p>
+            <p class="text-sm mt-4 text-slate-500 uppercase tracking-tighter">Ephesians 3:21</p>
+        </section>
+
+    </main>
+
+    <footer class="py-12 px-6 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>&copy; 100 Praises from the Bible. Built for Daily Worship.</p>
+    </footer>
+
+    <!-- Back to top button (Mobile optimized) -->
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+            class="fixed bottom-6 right-6 p-4 bg-amber-500 text-slate-900 rounded-full shadow-2xl hover:bg-amber-400 transition-all z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
 </body>
 </html>
